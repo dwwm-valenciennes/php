@@ -1,6 +1,6 @@
 <?php
 
-// Quelques fonctions utile
+// Quelques fonctions utiles
 
 // Parfois, on a besoin de savoir si une variable est définie
 echo 'La variable $firstname n\'est pas définie <br />';
