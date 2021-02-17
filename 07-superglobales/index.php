@@ -64,16 +64,34 @@
             // On récupère l'email et le mot de passe s'ils sont saisis dans le formulaire
             $email = $_POST['email'] ?? '';
             $password = $_POST['password'] ?? '';
+            $skills = $_POST['skills'] ?? [];
         ?>
 
         <form method="post" action="">
-            <input type="email" name="email" class="form-control" placeholder="Email">
+            <input type="email" name="email" class="form-control" placeholder="Email" value="<?= $email; ?>">
             <input type="password" name="password" class="form-control" placeholder="Mot de passe">
+
+            <div class="form-check">
+                <input type="checkbox" name="skills[]" value="front" class="form-check-input"
+                       id="front"
+                       <?php echo in_array('front', $skills) ? 'checked' : ''; ?>
+                >
+                <label for="front" class="form-check-label">Front</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" name="skills[]" value="back" class="form-check-input"
+                       id="back"
+                       <?= in_array('back', $skills) ? 'checked' : ''; ?>
+                >
+                <label for="back" class="form-check-label">Back</label>
+            </div>
 
             <button class="btn btn-primary">S'inscrire</button>
         </form>
 
         <?php
+            var_dump($_POST);
+
             if (!empty($_POST)) { // On vérifie si le formulaire est bien soumis
                 // On peut potentiellement vérifier les données...
                 // On va créer un tableau d'erreurs vide qu'on va pouvoir remplir au fur et à mesure des vérifications
@@ -86,11 +104,21 @@
                     $errors[] = 'L\'email est invalide.';
                 }
 
+                // On voudrait vérifier que le mot de passe fasse 6 caractères au minimum
+                if (strlen($password) < 6) {
+                    $errors[] = 'Le mot de passe est trop court.';
+                }
+
                 // Est-ce que mon formulaire est correct ?
                 if (empty($errors)) { // Si le tableau d'erreurs est vide
                     echo 'Le formulaire est correct';
                 } else {
-                    echo 'Le formulaire est incorrect';
+                    // Ici je vais parcourir le tableau d'erreurs pour les afficher
+                    echo '<ul>';
+                    foreach ($errors as $error) {
+                        echo '<li>'.$error.'</li>'; // Affiche chaque message d'erreur
+                    }
+                    echo '</ul>';
                 }
             } // Fin du premier if
         ?>
