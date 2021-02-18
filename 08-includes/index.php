@@ -1,47 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon super site</title>
+<?php
+// On va inclure le header (le doctype et le menu) sur chaque page
+// $title = 'Mon super site';
+require 'partials/header.php'; ?>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/scss/index.css">
-</head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container">
-                <a class="navbar-brand" href="#">Mon super site</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="">Accueil</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="">Contact</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="">Artistes</a>
-                        </li>
-                    </ul>
-                </div>
-            </div> <!-- Fin du container -->
-        </nav>
-    </header>
+<!-- Ici, entre les 2 require, on peut intégrer notre page HTML -->
+<div class="container">
+    <h1>Ma page d'accueil</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate assumenda consequatur perspiciatis tenetur? Excepturi quisquam, enim delectus, incidunt aliquid quis eaque perspiciatis eius temporibus quasi nulla officia aperiam fugit rem!</p>
+</div>
 
-
-    <footer>
-        <ul>
-            <li>Facebook</li>
-            <li>Instagram</li>
-        </ul>
-
-        <h2>Inscrivez-vous à la newsletter</h2>
-    </footer>
-</body>
-</html>
+<?php require 'partials/footer.php'; ?>
