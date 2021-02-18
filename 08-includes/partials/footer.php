@@ -10,6 +10,18 @@
                 </div>
                 <div class="col-4">
                     <h2>Inscrivez-vous à la newsletter</h2>
+
+                    <form action="" method="post">
+                        <div class="input-group">
+                            <input type="email" name="news-email" placeholder="Votre email"
+                                   class="form-control">
+                            <button class="btn btn-outline-light" name="newsletter">Ok</button>
+                        </div>
+                    </form>
+
+                    <?php if (!empty($_POST) && isset($_POST['newsletter'])) { ?>
+                        <div>Vous êtes inscrit à la newsletter.</div>
+                    <?php } ?>
                 </div>
             </div>
         </div>
