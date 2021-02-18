@@ -1,0 +1,17 @@
+body {
+  background-color: #f4f4f4;
+}
+body header {
+  border-bottom: 2px solid #e8e8e8;
+}
+body .navbar-nav {
+  margin-left: auto;
+}
+body .navbar-nav .nav-item {
+  border-bottom: 1px solid transparent;
+}
+body .navbar-nav .nav-item:hover {
+  border-color: #000;
+}
+
+/*# sourceMappingURL=index.css.map */
