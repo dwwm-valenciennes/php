@@ -14,7 +14,7 @@ body .navbar-nav {
 body .navbar-nav .nav-item {
   border-bottom: 1px solid transparent;
 }
-body .navbar-nav .nav-item:hover {
+body .navbar-nav .nav-item:hover, body .navbar-nav .nav-item.active {
   border-color: #000;
 }
 body footer {

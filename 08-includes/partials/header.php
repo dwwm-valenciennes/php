@@ -27,14 +27,14 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link <?= $page === 'index.php' ? 'active' : ''; ?>" href="index.php">Accueil</a>
+                        <li class="nav-item <?= $page === 'index.php' ? 'active' : ''; ?>">
+                            <a class="nav-link" href="index.php">Accueil</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link <?= $page === 'contact.php' ? 'active' : ''; ?>" href="contact.php">Contact</a>
+                        <li class="nav-item <?= $page === 'contact.php' ? 'active' : ''; ?>">
+                            <a class="nav-link" href="contact.php">Contact</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link <?= $page === 'artistes.php' ? 'active' : ''; ?>" href="artistes.php">Artistes</a>
+                        <li class="nav-item <?= $page === 'artistes.php' ? 'active' : ''; ?>">
+                            <a class="nav-link" href="artistes.php">Artistes</a>
                         </li>
                     </ul>
                 </div>
