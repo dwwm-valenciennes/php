@@ -44,5 +44,6 @@ foreach ($movies as $movie) {
                 VALUES ('$movie[0]', '$movie[1]-01-01', 'Lorem ipsum', $movie[2], '$cover', '$movie[3]')");
     echo "INSERT INTO movie (title, released_at, description, duration, cover, category_id)
           VALUES ('$movie[0]', '$movie[1]-01-01', 'Lorem ipsum', $movie[2], '$cover', '$movie[3]')";
+    // PHP_EOL est une constante qui permet de faire un retour chariot dans la CLI
     echo '<br />'.PHP_EOL;
 }
