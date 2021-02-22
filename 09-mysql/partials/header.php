@@ -35,8 +35,8 @@
                         <li class="nav-item <?= $page === 'contact.php' ? 'active' : ''; ?>">
                             <a class="nav-link" href="contact.php">Contact</a>
                         </li>
-                        <li class="nav-item <?= $page === 'artistes.php' ? 'active' : ''; ?>">
-                            <a class="nav-link" href="artistes.php">Artistes</a>
+                        <li class="nav-item <?= $page === 'acteurs.php' ? 'active' : ''; ?>">
+                            <a class="nav-link" href="acteurs.php">Acteurs</a>
                         </li>
                     </ul>
                 </div>
