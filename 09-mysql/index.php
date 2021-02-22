@@ -15,6 +15,8 @@ require 'partials/header.php'; ?>
         $query = $db->query('SELECT * FROM category');
         // Je récupère les résultats de la requête sous forme de tableau
         $categories = $query->fetchAll();
+        // Autre solution pour écrire la requête
+        $categories = $db->query('SELECT * FROM category')->fetchAll();
         // var_dump($categories);
         // A vous de jouer : Afficher proprement les catégories en parcourant
         // le tableau. On va essayer d'avoir un affichage en "colonne", c'est-à-dire
