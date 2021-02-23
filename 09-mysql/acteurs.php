@@ -17,6 +17,12 @@ $actors = $query->fetchAll();
                 <div class="card mb-4">
                     <div class="card-body">
                         <h2 class="card-title text-center"><?= $actor['firstname'].' '.$actor['name']; ?></h2>
+
+                        <div class="text-center">
+                            <a class="btn btn-dark" href="./acteur.php?id=<?= $actor['id']; ?>">
+                                Voir l'acteur
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
