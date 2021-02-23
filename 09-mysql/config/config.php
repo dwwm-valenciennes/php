@@ -13,10 +13,9 @@
 // dernière valeur du tableau
 $scripts = explode('/', $_SERVER['SCRIPT_NAME']);
 $page = array_pop($scripts); // index.php ou acteurs.php
-$title = 'Mon super site';
 
-if ($page === 'acteurs.php') {
-    $title = 'Nos acteurs';
-} else if ($page === 'contact.php') {
-    $title = 'Nous contacter';
+// On vérifie si un titre n'a pas été défini pour éviter
+// de l'écraser
+if (!isset($title)) {
+    $title = 'Mon super site';
 }

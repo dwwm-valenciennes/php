@@ -1,10 +1,6 @@
 <?php
-// $title = 'Les acteurs';
+$title = 'Nos acteurs';
 require 'partials/header.php';
-
-// @todo A voir pour faire cela
-// setTitle('Nos acteurs');
-// addCss('assets/scss/acteurs.css');
 
 // J'ai besoin de récupèrer les acteurs avec la bonne requête
 global $db;

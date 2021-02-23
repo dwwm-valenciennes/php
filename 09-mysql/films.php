@@ -1,4 +1,9 @@
-<?php require 'partials/header.php';
+<?php
+// On peut définir un titre et un css spécifique pour la page
+$title = 'Les films';
+$stylesheet = 'assets/css/films.css';
+
+require 'partials/header.php';
 
 // Requête SQL pour les films
 global $db;
