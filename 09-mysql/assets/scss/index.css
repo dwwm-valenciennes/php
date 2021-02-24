@@ -28,6 +28,12 @@ body.front footer h2 {
 
 body.admin nav.sticky-top {
   top: 56px;
+  z-index: 1019;
+}
+@media (min-width: 992px) {
+  body.admin nav.sticky-top {
+    min-height: calc(100vh - 56px);
+  }
 }
 body.admin nav.sticky-top .nav-link {
   color: #fff;

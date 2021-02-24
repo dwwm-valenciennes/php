@@ -37,6 +37,11 @@ body.front {
 body.admin {
     nav.sticky-top {
         top: 56px;
+        z-index: 1019;
+        
+        @media (min-width: 992px) {
+            min-height: calc(100vh - 56px);
+        }
 
         .nav-link {
             color: #fff;

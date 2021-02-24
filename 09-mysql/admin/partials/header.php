@@ -46,7 +46,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-2 px-0 bg-secondary">
-                <nav class="sticky-top ps-3">
+                <nav class="sticky-top">
                     <ul class="nav">
                         <li class="nav-item">
                             <a class="nav-link" href="./categorie-ajout.php">
