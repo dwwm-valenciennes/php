@@ -49,6 +49,25 @@
                         <li class="nav-item <?= $page === 'acteurs.php' ? 'active' : ''; ?>">
                             <a class="nav-link" href="acteurs.php">Acteurs</a>
                         </li>
+                        <div class="dropdown">
+                            <a class="btn btn-secondary dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                                Nos catégories
+                            </a>
+
+                            <?php
+                                // On récupère les catégories de la base pour les afficher dans le dropdown
+                                global $db;
+                                $categories = $db->query('SELECT * FROM category')->fetchAll();
+                            ?>
+
+                            <ul class="dropdown-menu">
+                                <?php foreach ($categories as $category) { ?>
+                                    <li><a class="dropdown-item" href="./categorie.php?id=<?= $category['id']; ?>">
+                                        <?= $category['name']; ?>
+                                    </a></li>
+                                <?php } ?>
+                            </ul>
+                        </div>
                     </ul>
                 </div>
             </div> <!-- Fin du container -->
