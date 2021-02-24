@@ -68,6 +68,10 @@
                                 <?php } ?>
                             </ul>
                         </div>
+
+                        <li class="nav-item <?= $page === 'dashboard.php' ? 'active' : ''; ?>">
+                            <a class="nav-link" href="./admin/dashboard.php">Administration</a>
+                        </li>
                     </ul>
                 </div>
             </div> <!-- Fin du container -->
