@@ -18,7 +18,7 @@
     <title><?= $title; ?></title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/scss/index.css">
+    <link rel="stylesheet" href="../assets/scss/index.css">
 
     <?php
     // On vérifie si le développeur a ajouté un fichier CSS
@@ -27,4 +27,33 @@
         <link rel="stylesheet" href="<?= $stylesheet; ?>">
     <?php } ?>
 </head>
-<body>
+<body class="admin">
+    <header class="navbar navbar-dark sticky-top bg-dark">
+        <div class="col-lg-2">
+            <a class="navbar-brand ms-3" href="./dashboard.php">
+                Mon dashboard
+            </a>
+        </div>
+        <div class="col-lg-10 text-end">
+            <ul class="navbar-nav me-3">
+                <li class="nav-item">
+                    <a class="nav-link" href="../index.php">Retour au site</a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-2 px-0 bg-secondary">
+                <nav class="sticky-top ps-3">
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="./categorie-ajout.php">
+                                Ajouter une catégorie
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-lg-10">

@@ -27,7 +27,7 @@
         <link rel="stylesheet" href="<?= $stylesheet; ?>">
     <?php } ?>
 </head>
-<body>
+<body class="front">
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">

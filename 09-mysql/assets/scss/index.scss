@@ -1,6 +1,6 @@
 $bgColor: #f4f4f4;
 
-body {
+body.front {
     background-color: $bgColor;
     display: flex;
     flex-direction: column;
@@ -30,6 +30,16 @@ body {
 
         h2 {
             font-size: 22px;
+        }
+    }
+}
+
+body.admin {
+    nav.sticky-top {
+        top: 56px;
+
+        .nav-link {
+            color: #fff;
         }
     }
 }
