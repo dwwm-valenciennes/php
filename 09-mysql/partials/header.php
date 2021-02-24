@@ -1,11 +1,12 @@
 <?php
+    require __DIR__.'/../config/functions.php';
     // Le chemin est relatif à index.php
     // require 'config/config.php';
     // On peut utiliser le chemin absolu pour que ce soit plus parlant
     // __DIR__ renvoie C:\wamp64\www\php\08-includes\partials
     require __DIR__.'/../config/config.php';
     // On va inclure la connexion à la BDD
-    require __DIR__.'/../config/database.php';
+    require_once __DIR__.'/../config/database.php';
 ?>
 
 <!DOCTYPE html>

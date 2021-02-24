@@ -28,7 +28,7 @@ $movies = $db->query('SELECT * FROM movie')->fetchAll();
                         </p>
 
                         <div class="d-grid">
-                            <a href="#" class="btn btn-danger">Voir le film</a>
+                            <a href="./film.php?id=<?= $movie['id']; ?>" class="btn btn-danger">Voir le film</a>
                         </div>
                     </div>
 
