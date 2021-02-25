@@ -54,6 +54,11 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="./categorie-liste.php">
+                                Catégories
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="./film-ajout.php">
                                 Ajouter un film
                             </a>
