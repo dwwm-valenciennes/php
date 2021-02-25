@@ -53,6 +53,11 @@
                                 Ajouter une catégorie
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./film-ajout.php">
+                                Ajouter un film
+                            </a>
+                        </li>
                     </ul>
                 </nav>
             </div>
