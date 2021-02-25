@@ -9,6 +9,10 @@ $released_at = $_POST['released_at'] ?? '';
 $category_id = $_POST['category'] ?? '';
 $errors = [];
 
+// Protection contre les attaques XSS
+$title = htmlspecialchars($title);
+$description = htmlspecialchars($description);
+
 // On récupère les catégories pour le select
 global $db;
 $categories = $db->query('SELECT * FROM category')->fetchAll();
