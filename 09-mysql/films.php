@@ -11,6 +11,13 @@ $movies = $db->query('SELECT * FROM movie')->fetchAll();
 ?>
 
 <div class="container">
+    <?php if (isset($_GET['success'])) { ?>
+        <div class="alert alert-success dismissable fade show">
+            Votre film a bien été ajouté dans la BDD.
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    <?php } ?>
+
     <h1>Les films</h1>
 
     <div class="row">
