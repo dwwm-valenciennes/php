@@ -18,6 +18,7 @@ var_dump(password_verify('azerty', $hash));
 
 if (!empty($_POST)) {
     // @todo Vérifier l'email (Obligatoire) et vérifier le mot de passe (Obligatoire)
+    // Vérifier que l'email est unique
 
     // On va vérifier que les 2 mots de passe correspondent
     if ($password !== $cf_password) {
