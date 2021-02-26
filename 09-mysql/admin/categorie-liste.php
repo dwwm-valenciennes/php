@@ -10,6 +10,12 @@ $categories = $db->query('SELECT * FROM category')->fetchAll();
     </div>
 <?php } ?>
 
+<?php if (isset($_GET['success'])) { ?>
+    <div class="alert alert-success">
+        Votre catégorie a bien été modifiée dans la BDD.
+    </div>
+<?php } ?>
+
 <table class="table table-striped">
     <thead>
         <tr>
