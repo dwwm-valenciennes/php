@@ -72,6 +72,12 @@
                         <li class="nav-item <?= $page === 'dashboard.php' ? 'active' : ''; ?>">
                             <a class="nav-link" href="./admin/dashboard.php">Administration</a>
                         </li>
+                        <li class="nav-item <?= $page === 'inscription.php' ? 'active' : ''; ?>">
+                            <a class="nav-link" href="./inscription.php">Inscription</a>
+                        </li>
+                        <li class="nav-item <?= $page === 'login.php' ? 'active' : ''; ?>">
+                            <a class="nav-link" href="./login.php">Login</a>
+                        </li>
                     </ul>
                 </div>
             </div> <!-- Fin du container -->
