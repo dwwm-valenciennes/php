@@ -1,5 +1,6 @@
 <?php
 $title = 'Connexion';
+ob_start();
 // session_start();
 require 'partials/header.php';
 
@@ -21,6 +22,7 @@ if (!empty($_POST)) {
     if ($user && password_verify($password, $user['password'])) {
         // On est connecté
         $_SESSION['user'] = $user;
+        header('Location: index.php');
     } else {
         echo 'Email ou mot de passe incorrect';
     }

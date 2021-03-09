@@ -32,3 +32,28 @@ function formatDate($date, $format = '%d %B %Y') {
 
     return strftime($format, strtotime($date));
 }
+
+/**
+ * Permet de savoir si je suis un administrateur
+ */
+function isAdmin() {
+    $admins = ['matthieumota@gmail.com', 'client@client.com'];
+    $user = $_SESSION['user'] ?? false;
+
+    if ($user && in_array($user['email'], $admins)) {
+        return true; // La fonction s'arrête et retourne si l'utilisateur
+        // est un admin
+    }
+
+    // Pour rendre cette partie plus dynamique, on peut ajouter
+    // une colonne role sur la table user.
+    // Par défaut, un inscrit aura le rôle "user".
+    // Sur le dashboard, on pourrait ajouter une page listant les utilisateurs
+    // et permettant de changer son rôle.
+    // On aura donc une action "Promouvoir en admin" où il faudra faire un UPDATE
+    // sur le user dans la table pour changer son rôle en "admin"
+    // On pourra ensuite ajouter un if dans cette fonction pour vérifier si le rôle
+    // du user est bien "admin".
+
+    return false; // Le user n'est pas administrateur
+}

@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require __DIR__.'/../../config/functions.php';
     // Le chemin est relatif à index.php
     // require 'config/config.php';
@@ -7,6 +8,12 @@
     require __DIR__.'/../../config/config.php';
     // On va inclure la connexion à la BDD
     require_once __DIR__.'/../../config/database.php';
+
+    // On va vérifier que l'utilisateur est bien administrateur
+    // pour pouvoir accéder au back office
+    if (!isAdmin()) {
+        require 'partials/403.php';
+    }
 ?>
 
 <!DOCTYPE html>

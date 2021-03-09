@@ -50,7 +50,7 @@
                         <li class="nav-item <?= $page === 'acteurs.php' ? 'active' : ''; ?>">
                             <a class="nav-link" href="acteurs.php">Acteurs</a>
                         </li>
-                        <div class="dropdown">
+                        <li class="dropdown">
                             <a class="btn btn-secondary dropdown-toggle" href="#" data-bs-toggle="dropdown">
                                 Nos catégories
                             </a>
@@ -68,7 +68,7 @@
                                     </a></li>
                                 <?php } ?>
                             </ul>
-                        </div>
+                        </li>
 
                         <?php if (isset($_SESSION['user'])) { ?>
                             <li class="nav-item dropdown">
@@ -78,8 +78,10 @@
                                     <?= $_SESSION['user']['email']; ?>
                                 </a>
                                 <div class="dropdown-menu">
-                                    <a href="./admin/dashboard.php" class="dropdown-item">Administration</a>
-                                    <a href="#" class="dropdown-item">Déconnexion</a>
+                                    <?php if (isAdmin()) { ?>
+                                        <a href="./admin/dashboard.php" class="dropdown-item">Administration</a>
+                                    <?php } ?>
+                                    <a href="./logout.php" class="dropdown-item">Déconnexion</a>
                                 </div>
                             </li>
                         <?php } else { ?>
