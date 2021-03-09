@@ -47,7 +47,7 @@
         <div class="row">
             <div class="col-lg-2 px-0 bg-secondary">
                 <nav class="sticky-top">
-                    <ul class="nav">
+                    <ul class="nav flex-column pt-3">
                         <li class="nav-item">
                             <a class="nav-link" href="./categorie-ajout.php">
                                 Ajouter une catégorie

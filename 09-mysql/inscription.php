@@ -17,8 +17,26 @@ echo $hash = password_hash('azerty', PASSWORD_DEFAULT);
 var_dump(password_verify('azerty', $hash));
 
 if (!empty($_POST)) {
-    // @todo Vérifier l'email (Obligatoire) et vérifier le mot de passe (Obligatoire)
+    // Vérifier l'email (Obligatoire) et vérifier le mot de passe (Obligatoire)
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errors['email'] = 'L\'email n\'est pas valide';
+    }
+
+    // Le mot de passe doit faire 6 caractères minimum
+    if (strlen($password) < 6) {
+        $errors['password'] = 'Le mot de passe est trop court';
+    }
+
     // Vérifier que l'email est unique
+    global $db;
+    $query = $db->prepare('SELECT * FROM user WHERE email = :email');
+    // $query->bindValue(':email', $email);
+    $query->execute([':email' => $email]);
+    $user = $query->fetch();
+
+    if ($user) {
+        $errors['email'] = 'L\'email existe déjà';
+    }
 
     // On va vérifier que les 2 mots de passe correspondent
     if ($password !== $cf_password) {
@@ -35,10 +53,21 @@ if (!empty($_POST)) {
         $query->bindValue(':password', password_hash($password, PASSWORD_DEFAULT));
         $query->execute();
 
+        // Si on veut connecter l'utilisateur au moment où il s'inscrit
+        session_start();
+        $user = $db->query('SELECT * FROM user WHERE email = '.$email)->fetch();
+        $_SESSION['user'] = $user;
+
         // Temporairement, on redirige vers le login pour tester la connexion
         // Parfois, le header renvoie une erreur (Dans ce cas, on ajoute ob_start() en haut du fichier)
         // Warning: Cannot modify header information
-        header('Location: login.php');
+        header('Location: index.php');
+    } else {
+        echo '<ul>';
+        foreach ($errors as $error) {
+            echo '<li>'.$error.'</li>'; // Affiche chaque message d'erreur
+        }
+        echo '</ul>';
     }
 }
 
