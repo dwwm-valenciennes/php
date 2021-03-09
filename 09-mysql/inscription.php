@@ -55,7 +55,7 @@ if (!empty($_POST)) {
 
         // Si on veut connecter l'utilisateur au moment où il s'inscrit
         session_start();
-        $user = $db->query('SELECT * FROM user WHERE email = '.$email)->fetch();
+        $user = $db->query('SELECT * FROM user WHERE email = "'.$email.'"')->fetch();
         $_SESSION['user'] = $user;
 
         // Temporairement, on redirige vers le login pour tester la connexion
