@@ -11,10 +11,10 @@ $errors = [];
 
 // Pour stocker un mot de passe dans la BDD (PAS EN CLAIR NI EN MD5)
 // On va générer un hash
-echo $hash = password_hash('azerty', PASSWORD_DEFAULT);
+// echo $hash = password_hash('azerty', PASSWORD_DEFAULT);
 // On peut vérifier qu'un hash correspond à un mot de passe
 // Utile pour le login
-var_dump(password_verify('azerty', $hash));
+// var_dump(password_verify('azerty', $hash));
 
 if (!empty($_POST)) {
     // Vérifier l'email (Obligatoire) et vérifier le mot de passe (Obligatoire)
@@ -54,7 +54,8 @@ if (!empty($_POST)) {
         $query->execute();
 
         // Si on veut connecter l'utilisateur au moment où il s'inscrit
-        session_start();
+        // session_start();
+        // SELECT * FROM user WHERE email = "toto@toto.com"
         $user = $db->query('SELECT * FROM user WHERE email = "'.$email.'"')->fetch();
         $_SESSION['user'] = $user;
 

@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require __DIR__.'/../config/functions.php';
     // Le chemin est relatif à index.php
     // require 'config/config.php';
@@ -69,15 +70,26 @@
                             </ul>
                         </div>
 
-                        <li class="nav-item <?= $page === 'dashboard.php' ? 'active' : ''; ?>">
-                            <a class="nav-link" href="./admin/dashboard.php">Administration</a>
-                        </li>
-                        <li class="nav-item <?= $page === 'inscription.php' ? 'active' : ''; ?>">
-                            <a class="nav-link" href="./inscription.php">Inscription</a>
-                        </li>
-                        <li class="nav-item <?= $page === 'login.php' ? 'active' : ''; ?>">
-                            <a class="nav-link" href="./login.php">Login</a>
-                        </li>
+                        <?php if (isset($_SESSION['user'])) { ?>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                                    <img src="https://unavatar.now.sh/<?= $_SESSION['user']['email']; ?>" alt=""
+                                         class="rounded-circle me-2" width="30">
+                                    <?= $_SESSION['user']['email']; ?>
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a href="./admin/dashboard.php" class="dropdown-item">Administration</a>
+                                    <a href="#" class="dropdown-item">Déconnexion</a>
+                                </div>
+                            </li>
+                        <?php } else { ?>
+                            <li class="nav-item <?= $page === 'inscription.php' ? 'active' : ''; ?>">
+                                <a class="nav-link" href="./inscription.php">Inscription</a>
+                            </li>
+                            <li class="nav-item <?= $page === 'login.php' ? 'active' : ''; ?>">
+                                <a class="nav-link" href="./login.php">Login</a>
+                            </li>
+                        <?php } ?>
                     </ul>
                 </div>
             </div> <!-- Fin du container -->

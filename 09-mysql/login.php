@@ -1,6 +1,6 @@
 <?php
 $title = 'Connexion';
-session_start();
+// session_start();
 require 'partials/header.php';
 
 $email = $_POST['email'] ?? '';
@@ -27,7 +27,7 @@ if (!empty($_POST)) {
 }
 
 // Afficher un message "Bienvenue USER"
-var_dump($_SESSION);
+// var_dump($_SESSION);
 
 ?>
 
