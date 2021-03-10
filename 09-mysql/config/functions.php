@@ -54,6 +54,9 @@ function isAdmin() {
     // sur le user dans la table pour changer son rôle en "admin"
     // On pourra ensuite ajouter un if dans cette fonction pour vérifier si le rôle
     // du user est bien "admin".
+    if ($user['role'] === 'admin') {
+        return true;
+    }
 
     return false; // Le user n'est pas administrateur
 }

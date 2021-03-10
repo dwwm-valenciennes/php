@@ -70,6 +70,11 @@
                                 Ajouter un film
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./utilisateur-liste.php">
+                                Utilisateurs
+                            </a>
+                        </li>
                     </ul>
                 </nav>
             </div>
