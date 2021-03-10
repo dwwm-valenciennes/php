@@ -1,7 +1,7 @@
 <?php
 
 // On inclut la database
-require '../config/database.php';
+require 'partials/header.php';
 
 // On récupère l'id
 $id = $_GET['id'] ?? 0;

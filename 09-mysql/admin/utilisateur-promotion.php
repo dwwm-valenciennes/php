@@ -1,6 +1,6 @@
 <?php
 
-require '../config/database.php';
+require 'partials/header.php';
 
 $id = $_GET['id'] ?? 0;
 

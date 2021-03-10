@@ -37,8 +37,19 @@ function formatDate($date, $format = '%d %B %Y') {
  * Permet de savoir si je suis un administrateur
  */
 function isAdmin() {
+    global $db;
     $admins = ['matthieumota@gmail.com', 'client@client.com'];
     $user = $_SESSION['user'] ?? false;
+
+    // On va rafraichir la session avec la BDD
+    // (au cas où on change le rôle d'un utilisateur alors
+    // qu'il est connecté sur le site)
+    if ($user) {
+        $_SESSION['user'] = $db
+            ->query('SELECT * FROM user WHERE id = '.$user['id'])
+            ->fetch();
+        $user = $_SESSION['user'];
+    }
 
     if ($user && in_array($user['email'], $admins)) {
         return true; // La fonction s'arrête et retourne si l'utilisateur
@@ -54,7 +65,7 @@ function isAdmin() {
     // sur le user dans la table pour changer son rôle en "admin"
     // On pourra ensuite ajouter un if dans cette fonction pour vérifier si le rôle
     // du user est bien "admin".
-    if ($user['role'] === 'admin') {
+    if ($user && $user['role'] === 'admin') {
         return true;
     }
 
