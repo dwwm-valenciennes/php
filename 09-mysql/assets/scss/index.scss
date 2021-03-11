@@ -23,6 +23,19 @@ body.front {
         }
     }
 
+    .card-img-top {
+        height: 450px;
+        object-fit: cover;
+    }
+
+    .carousel-item {
+        img {
+            width: 33.33%;
+            height: 300px;
+            object-fit: cover;
+        }
+    }
+
     footer {
         background-color: rgba(63, 60, 60);
         color: #fff;

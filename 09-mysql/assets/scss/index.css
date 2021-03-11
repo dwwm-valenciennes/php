@@ -17,6 +17,15 @@ body.front .navbar-nav .nav-item {
 body.front .navbar-nav .nav-item:hover, body.front .navbar-nav .nav-item.active {
   border-color: #000;
 }
+body.front .card-img-top {
+  height: 450px;
+  object-fit: cover;
+}
+body.front .carousel-item img {
+  width: 33.33%;
+  height: 300px;
+  object-fit: cover;
+}
 body.front footer {
   background-color: #3f3c3c;
   color: #fff;
