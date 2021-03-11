@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax et formulaires</title>
+</head>
+<body>
+    <form action="get.php" id="get">
+        <label for="firstname">Prénom</label>
+        <input type="text" name="firstname" id="firstname">
+
+        <button>Envoyer</button>
+    </form>
+
+    <form method="post" action="post.php" id="post">
+        <label for="message">Message</label>
+        <textarea name="message" id="message"></textarea>
+
+        <button>Envoyer</button>
+    </form>
+
+    <script>
+        document.querySelector('#get').addEventListener('submit', (event) => {
+            event.preventDefault(); // J'annule la soumission du formulaire
+
+            // On va récupèrer tous les champs du formulaire pour les passer à la requête
+            // event.currentTarget renvoie le formulaire (this)
+            let formData = new FormData(event.currentTarget); // Toutes les données du form
+            let params = new URLSearchParams(formData); // Permet de générer une URL avec les données
+            // console.log(params.toString());
+
+            // Méthode un par un
+            let params2 = '';
+            params2 += '&firstname='+document.getElementById('firstname').value;
+            // params2 += '&lastname='+document.getElementById('lastname').value;
+
+            fetch('./get.php?'+params)
+                .then(response => response.text())
+                .then(data => console.log(data));
+        });
+
+        document.querySelector('#post').addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            fetch('./post.php', {
+                method: 'POST',
+                // On passe le formulaire dans le corps de la requête
+                body: new FormData(event.currentTarget)
+            });
+        });
+    </script>
+</body>
+</html>
