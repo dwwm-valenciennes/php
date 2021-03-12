@@ -7,8 +7,20 @@ try {
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC // On récupére un tableau associatif dans les résultats
     ]);
 
-    // Requête pour récupèrer les films
-    $movies = $db->query('SELECT * FROM movie')->fetchAll();
+    // Si on veut les films d'une catégorie
+    $category = $_GET['category'] ?? null;
+
+    if ($category) {
+        // Requête pour les films d'une catégorie
+        $query = $db->prepare(
+            'SELECT * FROM movie WHERE category_id = :category'
+        );
+        $query->execute([':category' => $category]);
+        $movies = $query->fetchAll();
+    } else {
+        // Requête pour récupèrer les films
+        $movies = $db->query('SELECT * FROM movie')->fetchAll();
+    }
 
     // On précise qu'on renvoie du JSON et pas du HTML
     header('Content-Type: application/json');
