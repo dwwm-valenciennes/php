@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX avec Axios</title>
+</head>
+<body>
+    <ul id="movies"></ul>
+    <pre id="debug" style="background-color: lightcoral;"></pre>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        axios.get('./movies.php')
+            .then(response => {
+                let movies = response.data;
+
+                // On va parcourir chaque film pour les afficher sur la page
+                movies.map(movie => {
+                    document.getElementById('movies').innerHTML += `<li>
+                        ${movie.title}
+                    </li>
+                    `;
+                });
+            })
+            .catch(error => {
+                // Optionnel pour voir quelques erreurs PHP s'il y en a (MySQL)
+                document.getElementById('debug').innerHTML = error.response.data;
+            });
+    </script>
+</body>
+</html>
