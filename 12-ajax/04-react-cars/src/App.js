@@ -1,6 +1,7 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import CarForm from './components/CarForm';
 
 function App() {
   const [cars, setCars] = useState([]);
@@ -26,6 +27,8 @@ function App() {
       </ul>
 
       {selectedCar && <h1>{selectedCar.brand}</h1>}
+
+      <CarForm />
     </div>
   );
 }
