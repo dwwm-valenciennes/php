@@ -39,6 +39,12 @@ class CarForm extends React.Component {
             disabled = true;
         }
 
+        // On peut afficher une erreur en fonction du state
+        let error;
+        if (this.state.brand.length <= 0) {
+            error = 'La marque est vide';
+        }
+
         return (
             <form onSubmit={e => this.handleSubmit(e)}>
                 <label>Marque</label>
@@ -49,6 +55,10 @@ class CarForm extends React.Component {
                 <input type="text" name="price" value={this.state.price} onChange={e => this.handleChange(e)} />
 
                 <button disabled={disabled}>Ajouter</button>
+
+                {error && <h1>{error}</h1>}
+                {/* On affiche la valeur d'un champ s'il n'y a pas d'erreur */}
+                {!error && <h1>{this.state.brand}</h1>}
             </form>
         );
     }

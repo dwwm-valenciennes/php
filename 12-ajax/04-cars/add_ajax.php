@@ -26,6 +26,8 @@ if (!empty($_POST)) {
     }
 
     header('Content-Type: application/json');
+    // J'autorise n'importe qui à se connecter à l'API
+    header('Access-Control-Allow-Origin: *');
 
     if (empty($errors)) {
         $query = $db->prepare(
