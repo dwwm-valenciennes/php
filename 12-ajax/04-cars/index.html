@@ -28,15 +28,17 @@
             .then(response => {
                 let cars = response.data;
 
+                // On ajoute les li dans le DOM
                 cars.map(car => {
                     byId('cars').innerHTML += `<li data-car="${car.id}">${car.brand} ${car.model} ${car.price} &euro;</li>`;
                 });
 
-                for (li of byTag('li')) {
+                var lis = byTag('li');
+                for (li of lis) {
                     li.addEventListener('click', e => {
                         let id = e.currentTarget.dataset.car;
 
-                        axios.get('./cars.php?id='+id).then(response => {
+                        axios.get(`./cars.php?id=${id}`).then(response => {
                             let car = response.data;
 
                             byId('car').innerHTML = `
@@ -46,8 +48,8 @@
                         });
                     });
                 }
-            });
-        
+            }); // Fin de axios
+
         byId('add-car').addEventListener('submit', () => {
 
         });
