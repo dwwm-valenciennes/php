@@ -1,12 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cars AJAX</title>
 </head>
 <body>
+    <ul id="cars"></ul>
+    <div id="car"></div>
+    <form action="add_ajax.php" method="post" id="add-car">
+        <label for="brand">Marque</label>
+        <input type="text" name="brand" id="brand">
+        <label for="model">Modèle</label>
+        <input type="text" name="model" id="model">
+        <label for="price">Prix</label>
+        <input type="text" name="price" id="price">
+        <button>Ajouter</button>
+    </form>
+
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
+        let byId = id => document.getElementById(id);
+        let byTag = tag => document.getElementsByTagName(tag);
+
+        axios.get('./cars.php')
+            .then(response => {
+                let cars = response.data;
+
+                cars.map(car => {
+                    byId('cars').innerHTML += `<li data-car="${car.id}">${car.brand} ${car.model} ${car.price} &euro;</li>`;
+                });
+
+                for (li of byTag('li')) {
+                    li.addEventListener('click', e => {
+                        let id = e.currentTarget.dataset.car;
+
+                        axios.get('./cars.php?id='+id).then(response => {
+                            let car = response.data;
+
+                            byId('car').innerHTML = `
+                                <h1>${car.brand} ${car.model} ${car.price} &euro;</h1>
+                                <img src="./images/${car.id}.jpeg" width="250" />
+                            `;
+                        });
+                    });
+                }
+            });
         
+        byId('add-car').addEventListener('submit', () => {
+
+        });
     </script>
 </body>
 </html>
