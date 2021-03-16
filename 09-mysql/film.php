@@ -9,6 +9,15 @@ $id = $_GET['id'] ?? 0;
 // seule connexion)
 require_once 'config/database.php';
 
+/**
+ * Si on veut récupérer le film et ses acteurs en 1 seule requête
+ * (Attention on doit changer le code)
+ * SELECT * FROM movie
+ * INNER JOIN movie_has_actor ON movie.id = movie_has_actor.movie_id
+ * INNER JOIN actor ON actor.id = movie_has_actor.actor_id
+ * WHERE movie.id = 4;
+ */
+
 global $db;
 $query = $db->prepare('SELECT * FROM movie WHERE id = :id');
 $query->bindValue(':id', $id);
@@ -42,11 +51,20 @@ if (!$movie) {
                     </div>
 
                     <div class="mt-5">
-                        <?php // @todo Jointure entre les films et les acteurs ?>
+                        <?php
+                            $query = $db->prepare(
+                                'SELECT * FROM actor
+                                 INNER JOIN movie_has_actor ON actor.id = movie_has_actor.actor_id
+                                 WHERE movie_has_actor.movie_id = :id'
+                            );
+                            $query->execute([':id' => $id]);
+                            $actors = $query->fetchAll();
+                        ?>
                         <h5>Avec :</h5>
                         <ul class="list-unstyled">
-                            <li><a href="#">Al Pacino</a></li>
-                            <li><a href="#">Marlon Brando</a></li>
+                            <?php foreach ($actors as $actor) { ?>
+                                <li><a href="#"><?= $actor['firstname'].' '.$actor['name']; ?></a></li>
+                            <?php } ?>
                         </ul>
                     </div>
                 </div>
