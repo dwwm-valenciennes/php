@@ -63,7 +63,9 @@ if (!$movie) {
                         <h5>Avec :</h5>
                         <ul class="list-unstyled">
                             <?php foreach ($actors as $actor) { ?>
-                                <li><a href="#"><?= $actor['firstname'].' '.$actor['name']; ?></a></li>
+                                <li><a href="./acteur.php?id=<?= $actor['id']; ?>">
+                                    <?= $actor['firstname'].' '.$actor['name']; ?>
+                                </a></li>
                             <?php } ?>
                         </ul>
                     </div>
