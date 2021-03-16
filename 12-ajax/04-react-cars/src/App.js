@@ -28,7 +28,7 @@ function App() {
 
       {selectedCar && <h1>{selectedCar.brand}</h1>}
 
-      <CarForm />
+      <CarForm brand="Renault" onCarAdded={(car) => setCars(cars.concat(car))} />
     </div>
   );
 }

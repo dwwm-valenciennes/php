@@ -7,7 +7,7 @@ class CarForm extends React.Component {
         super(props);
 
         this.state = {
-            brand: '',
+            brand: props.brand,
             model: '',
             price: ''
         };
@@ -25,7 +25,7 @@ class CarForm extends React.Component {
         console.log(this.state);
         // URLSearchParams permet de préciser que c'est un "formulaire"
         axios.post('http://localhost/php/12-ajax/04-cars/add_ajax.php', new URLSearchParams(this.state)).then(
-            response => console.log(response.data)
+            response => this.props.onCarAdded(response.data)
         );
     }
 
