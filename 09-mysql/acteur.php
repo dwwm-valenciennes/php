@@ -14,6 +14,11 @@ $query->bindValue(':id', $id);
 $query->execute(); // Nécessaire si on prépare la requête
 $actor = $query->fetch(); // On a une seule ligne de résultat
 
+// Récupérer les films de l'acteur
+$query = $db->prepare('SELECT * FROM movie INNER JOIN movie_has_actor ON movie_has_actor.movie_id = movie.id WHERE movie_has_actor.actor_id = :id');
+$query->execute([':id' => $id]);
+$movies = $query->fetchAll();
+
 // On vérifie ici si l'acteur existe dans la base
 // Sinon on renvoie une 404
 if (!$actor) {
@@ -29,6 +34,44 @@ if (!$actor) {
     <p>Pour formater la date en français</p>
     <?php setlocale(LC_ALL, 'fr.utf-8'); ?>
     <p><?= strftime('%d %B %Y', strtotime($actor['birthday'])); ?></p>
+
+    <h1>Ses films</h1>
+
+    <div class="row">
+        <?php foreach ($movies as $movie) { ?>
+            <div class="col-3">
+                <div class="card shadow mb-4">
+                    <img class="card-img-top" src="uploads/movies/<?= $movie['cover']; ?>" />
+                    <div class="card-body">
+                        <h2 class="card-title"><?= $movie['title']; ?></h2>
+                        <p class="card-text">
+                            Sorti en <?= substr($movie['released_at'], 0, 4); ?>
+                        </p>
+                        <p class="card-text">
+                            <?= $movie['description']; ?>
+                        </p>
+
+                        <div class="d-grid">
+                            <a href="./film.php?id=<?= $movie['id']; ?>" class="btn btn-danger">Voir le film</a>
+                        </div>
+                    </div>
+
+                    <div class="card-footer text-muted">
+                        <?php
+                        // Représente la note du film
+                        $note = rand(0, 5);
+                        for ($i = 0; $i < 5; $i++) {
+                            if ($i < $note) {
+                                echo '★';
+                            } else {
+                                echo '☆';
+                            }
+                        } ?>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+    </div>
 </div>
 
 <?php require 'partials/footer.php'; ?>
