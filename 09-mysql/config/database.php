@@ -5,7 +5,7 @@
  */
 
 // $db est un objet PDO
-$db = new PDO('mysql:host=localhost;dbname=webflix', 'root', '', [
+$db = new PDO('mysql:host=localhost;dbname=webflix;charset=UTF8', 'root', '', [
     // Activer les erreurs SQL
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
     // On récupère les résultats au format tableau associatif
