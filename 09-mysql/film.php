@@ -79,27 +79,38 @@ if (!$movie) {
 
                         // Traitement du formulaire panier
                         if (!empty($_POST) && isset($_POST['cart'])) {
+
+                            $allowedFormats = ['1080p', 'VOD', '4K'];
+
+                            if (!in_array($format, $allowedFormats)) {
+                                $errors['format'] = 'Le format est invalide.';
+                            }
                             
                             // On vérifie si le produit est déjà présent dans le panier (Titre et format)
                             // Si c'est le cas, on augmente sa quantité de 1
                             // Sinon, on ajoute simplement le produit
 
-                            if (checkCart($movie, $format)) {
-                                updateCart($movie, $format);
-                            } else {
-                                addToCart($movie, $format);
-                            }
+                            if (empty($errors)) {
+                                if (checkCart($movie, $format)) {
+                                    updateCart($movie, $format);
+                                } else {
+                                    addToCart($movie, $format);
+                                }
 
-                            header('Location: cart.php');
+                                header('Location: cart.php');
+                            } else {
+                                // Si le format n'est pas correct
+                                echo $errors['format'];
+                            }
                         }
                     ?>
 
                     <form method="post" class="mt-5">
                         <div class="mb-4">
                             <select class="form-control" name="format">
-                                <option>1080p</option>
-                                <option>VOD</option>
-                                <option>4K</option>
+                                <option value="1080p">1080p</option>
+                                <option value="VOD">VOD</option>
+                                <option value="4K">4K</option>
                             </select>
                         </div>
 
@@ -134,7 +145,7 @@ if (!$movie) {
                 <div class="card-body">
                     <?php
                         // Récupèrer les commentaires
-                        $query = $db->prepare('SELECT * FROM comment WHERE movie_id = :id');
+                        $query = $db->prepare('SELECT * FROM comment WHERE movie_id = :id ORDER BY created_at DESC LIMIT 5');
                         $query->execute([':id' => $movie['id']]);
                         $comments = $query->fetchAll();
 
@@ -156,7 +167,7 @@ if (!$movie) {
                         </div>
                         <hr />
 
-                    <?php } ?>
+                    <?php } // Fin du foreach ?>
 
                     <?php
                         $pseudo = $_POST['pseudo'] ?? null;

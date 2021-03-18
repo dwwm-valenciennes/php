@@ -1,5 +1,7 @@
 <?php
 
+ob_start();
+
 $title = 'Panier';
 require __DIR__.'/partials/header.php';
 
