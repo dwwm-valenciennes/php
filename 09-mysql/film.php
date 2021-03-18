@@ -72,6 +72,39 @@ if (!$movie) {
                             <?php } ?>
                         </ul>
                     </div>
+
+                    <?php
+                        $format = $_POST['format'] ?? null;
+                        $errors = [];
+
+                        // Traitement du formulaire panier
+                        if (!empty($_POST) && isset($_POST['cart'])) {
+                            
+                            // On vérifie si le produit est déjà présent dans le panier (Titre et format)
+                            // Si c'est le cas, on augmente sa quantité de 1
+                            // Sinon, on ajoute simplement le produit
+
+                            if (checkCart($movie, $format)) {
+                                updateCart($movie, $format);
+                            } else {
+                                addToCart($movie, $format);
+                            }
+
+                            header('Location: cart.php');
+                        }
+                    ?>
+
+                    <form method="post" class="mt-5">
+                        <div class="mb-4">
+                            <select class="form-control" name="format">
+                                <option>1080p</option>
+                                <option>VOD</option>
+                                <option>4K</option>
+                            </select>
+                        </div>
+
+                        <button class="btn btn-danger" name="cart">Ajouter au panier</button>
+                    </form>
                 </div>
 
                 <div class="card-footer text-muted">

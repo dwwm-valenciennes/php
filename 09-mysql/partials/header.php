@@ -92,6 +92,10 @@
                                 <a class="nav-link" href="./login.php">Login</a>
                             </li>
                         <?php } ?>
+
+                        <li class="nav-item <?= $page === 'cart.php' ? 'active' : ''; ?>">
+                            <a class="nav-link" href="cart.php">Panier (<?= count(cart()) ?>)</a>
+                        </li>
                     </ul>
                 </div>
             </div> <!-- Fin du container -->

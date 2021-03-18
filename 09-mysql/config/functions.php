@@ -5,7 +5,7 @@
  */
 
 /**
- * Permet de convertir des minutes en heures
+ * Convertir des minutes en heures
  * Exemple: 145 devient 2h25
  */
 function convertToHours($duration) {
@@ -70,4 +70,54 @@ function isAdmin() {
     }
 
     return false; // Le user n'est pas administrateur
+}
+
+/**
+ * Ajouter un film dans le panier
+ */
+function addToCart($movie, $format) {
+    $item = [
+        'id' => $movie['id'],
+        'title' => $movie['title'],
+        'format' => $format,
+        'cover' => $movie['cover'],
+        'quantity' => 1,
+    ];
+
+    $_SESSION['cart'][] = $item;
+}
+
+/**
+ * Modifier un film dans le panier
+ */
+function updateCart($movie, $format) {
+    $indexToUpdate = null;
+
+    foreach (cart() as $index => $cart) {
+        if ($movie['title'] === $cart['title'] && $format === $cart['format']) {
+            $indexToUpdate = $index;
+        }
+    }
+
+    $_SESSION['cart'][$indexToUpdate]['quantity']++;
+}
+
+/**
+ * Vérifier si un film est présent dans le panier
+ */
+function checkCart($movie, $format) {
+    foreach (cart() as $cart) {
+        if ($movie['title'] === $cart['title'] && $format === $cart['format']) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+/**
+ * Récupérer le panier
+ */
+function cart() {
+    return $_SESSION['cart'] ?? [];
 }
