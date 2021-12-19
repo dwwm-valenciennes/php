@@ -1,6 +1,6 @@
 <?php
 // On va inclure le header (le doctype et le menu) sur chaque page
-// $title = 'Mon super site';
+// $title = 'Webflix';
 require 'partials/header.php';
 
 /**

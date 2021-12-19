@@ -30,9 +30,9 @@
 </head>
 <body class="front">
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-                <a class="navbar-brand" href="index.php">Mon super site</a>
+                <a class="navbar-brand" href="index.php">Webflix</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -89,7 +89,7 @@
                                 <a class="nav-link" href="./inscription.php">Inscription</a>
                             </li>
                             <li class="nav-item <?= $page === 'login.php' ? 'active' : ''; ?>">
-                                <a class="nav-link" href="./login.php">Login</a>
+                                <a class="btn btn-danger" href="./login.php">Login</a>
                             </li>
                         <?php } ?>
 

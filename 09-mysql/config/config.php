@@ -17,5 +17,5 @@ $page = array_pop($scripts); // index.php ou acteurs.php
 // On vérifie si un titre n'a pas été défini pour éviter
 // de l'écraser
 if (!isset($title)) {
-    $title = 'Mon super site';
+    $title = 'Webflix';
 }

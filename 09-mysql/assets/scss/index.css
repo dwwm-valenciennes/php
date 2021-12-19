@@ -15,7 +15,7 @@ body.front .navbar-nav .nav-item {
   border-bottom: 1px solid transparent;
 }
 body.front .navbar-nav .nav-item:hover, body.front .navbar-nav .nav-item.active {
-  border-color: #000;
+  border-color: #fff;
 }
 body.front .card-img-top {
   height: 450px;
