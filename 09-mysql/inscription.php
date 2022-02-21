@@ -64,7 +64,7 @@ if (!empty($_POST)) {
         // Warning: Cannot modify header information
         header('Location: index.php');
     } else {
-        echo '<ul>';
+        echo '<ul class="alert alert-danger">';
         foreach ($errors as $error) {
             echo '<li>'.$error.'</li>'; // Affiche chaque message d'erreur
         }

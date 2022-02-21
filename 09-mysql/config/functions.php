@@ -38,7 +38,7 @@ function formatDate($date, $format = '%d %B %Y') {
  */
 function isAdmin() {
     global $db;
-    $admins = ['matthieumota@gmail.com', 'client@client.com'];
+    $admins = ['matthieumota@gmail.com', 'client@client.com', 'matthieu@boxydev.com'];
     $user = $_SESSION['user'] ?? false;
 
     // On va rafraichir la session avec la BDD
